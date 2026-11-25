@@ -19,6 +19,7 @@
         <module>providers/morph-provider-pdf</module>
         <module>morph-application</module>
         <module>morph-local-web</module>
+        <module>morph-cli</module>
     </modules>
 
     <properties>

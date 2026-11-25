@@ -1,0 +1,27 @@
+#!/bin/sh
+# Starts Morph with a bundled runtime when there is one, otherwise with JAVA_HOME or the java on the PATH (21+).
+set -eu
+
+link=$0
+while [ -h "$link" ]; do
+    target=$(readlink "$link")
+    case $target in
+        /*) link=$target ;;
+        *) link=$(dirname "$link")/$target ;;
+    esac
+done
+home=$(CDPATH= cd -- "$(dirname -- "$link")/.." && pwd)
+
+if [ -x "$home/runtime/bin/java" ]; then
+    java=$home/runtime/bin/java
+elif [ -n "${JAVA_HOME:-}" ]; then
+    java=$JAVA_HOME/bin/java
+else
+    java=java
+fi
+
+case $(uname -s) in
+    MINGW* | MSYS* | CYGWIN*) home=$(cygpath -m "$home") ;; # a Windows java needs a Windows class path
+esac
+
+exec "$java" --enable-native-access=ALL-UNNAMED -cp "$home/lib/*" dev.morph.cli.Main "$@"
