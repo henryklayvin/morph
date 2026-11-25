@@ -18,6 +18,14 @@
     </dependencySets>
     <fileSets>
         <fileSet>
+            <directory>${project.basedir}/..</directory>
+            <outputDirectory>.</outputDirectory>
+            <includes>
+                <include>LICENSE</include>
+                <include>NOTICE</include>
+            </includes>
+        </fileSet>
+        <fileSet>
             <directory>src/launcher</directory>
             <outputDirectory>bin</outputDirectory>
             <includes>

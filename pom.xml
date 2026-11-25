@@ -1,16 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- The append.path attributes keep modules from inheriting URLs with their own name appended. -->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd"
+         child.project.url.inherit.append.path="false">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>dev.morph</groupId>
+    <groupId>io.github.henryklayvin.morph</groupId>
     <artifactId>morph-parent</artifactId>
     <version>0.1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>Morph</name>
     <description>Universal file converter. Privacy first, local processing, open source.</description>
+    <url>https://github.com/henryklayvin/morph</url>
+    <inceptionYear>2026</inceptionYear>
+
+    <licenses>
+        <license>
+            <name>Apache-2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <!-- Required by Maven Central. No e-mail: it would be public forever in every artifact. -->
+    <developers>
+        <developer>
+            <id>henryklayvin</id>
+            <name>Henry Kláyvin</name>
+            <url>https://github.com/henryklayvin</url>
+        </developer>
+    </developers>
 
     <modules>
         <module>morph-contracts</module>
@@ -21,6 +42,25 @@
         <module>morph-local-web</module>
         <module>morph-cli</module>
     </modules>
+
+    <scm child.scm.connection.inherit.append.path="false"
+         child.scm.developerConnection.inherit.append.path="false"
+         child.scm.url.inherit.append.path="false">
+        <connection>scm:git:https://github.com/henryklayvin/morph.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/henryklayvin/morph.git</developerConnection>
+        <url>https://github.com/henryklayvin/morph</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <issueManagement>
+        <system>GitHub Issues</system>
+        <url>https://github.com/henryklayvin/morph/issues</url>
+    </issueManagement>
+
+    <ciManagement>
+        <system>GitHub Actions</system>
+        <url>https://github.com/henryklayvin/morph/actions</url>
+    </ciManagement>
 
     <properties>
         <!-- Java 21 is both the compilation target and the minimum runtime. See docs/adr/0001. -->
@@ -50,32 +90,32 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>dev.morph</groupId>
+                <groupId>io.github.henryklayvin.morph</groupId>
                 <artifactId>morph-contracts</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>dev.morph</groupId>
+                <groupId>io.github.henryklayvin.morph</groupId>
                 <artifactId>morph-engine</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>dev.morph</groupId>
+                <groupId>io.github.henryklayvin.morph</groupId>
                 <artifactId>morph-provider-image</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>dev.morph</groupId>
+                <groupId>io.github.henryklayvin.morph</groupId>
                 <artifactId>morph-provider-pdf</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>dev.morph</groupId>
+                <groupId>io.github.henryklayvin.morph</groupId>
                 <artifactId>morph-application</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>dev.morph</groupId>
+                <groupId>io.github.henryklayvin.morph</groupId>
                 <artifactId>morph-local-web</artifactId>
                 <version>${project.version}</version>
             </dependency>

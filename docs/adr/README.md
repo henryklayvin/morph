@@ -16,5 +16,5 @@ Uma decisão por arquivo. Uma decisão aceita não é reescrita: se mudar, um no
 | [0010](0010-interface-web.md) | Uma interface, backends intercambiáveis, contrato fixado em arquivo | Aceita |
 | [0011](0011-temporarios-e-logs.md) | Arquivos temporários privados e ausência de logs | Aceita |
 | [0012](0012-distribuicao.md) | Distribuição: jlink, jpackage e assinatura | Proposta |
-| [0013](0013-licenca-e-identidade.md) | Licença e identificadores públicos | **Aguarda decisão** |
+| [0013](0013-licenca-e-identidade.md) | Licença Apache-2.0 e identificadores `io.github.henryklayvin.morph` | Aceita |
 | [0014](0014-dependencias.md) | Política de dependências | Aceita |

@@ -20,7 +20,7 @@ Para incluir o JDK 25, extraia um em `.tools/jdk-25` (ignorado pelo Git) ou info
 
 1. Crie `providers/morph-provider-<categoria>` dependendo apenas de `morph-contracts`.
 2. Implemente `ConversionProvider` e registre em
-   `META-INF/services/dev.morph.contracts.ConversionProvider`.
+   `META-INF/services/io.github.henryklayvin.morph.contracts.ConversionProvider`.
 3. Declare formatos que ainda não existem em `additionalFormats()`.
 4. Escreva somente em `context.workDirectory()`, consulte `context.cancellation()`, respeite `context.limits()` antes
    de alocar e devolva um `OutputCheck` que **releia o arquivo do disco**.
@@ -32,3 +32,8 @@ Para incluir o JDK 25, extraia um em `.tools/jdk-25` (ignorado pelo Git) ou info
 
 Um teste que não falha quando o código está errado não prova nada. Para proteções, quebre o código de propósito e
 confirme que algum teste reprova.
+
+## Licença das contribuições
+
+O Morph é distribuído sob a [Apache-2.0](LICENSE). Ao enviar uma contribuição, você concorda que ela seja licenciada
+nos mesmos termos, conforme a seção 5 da licença. Não há acordo adicional a assinar.

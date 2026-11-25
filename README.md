@@ -9,8 +9,7 @@ morph convert documento.pdf --to png -O dpi=200
 morph web          # a mesma coisa, no navegador, usando o mesmo motor
 ```
 
-> **Situação:** Fase 0 concluída (prova da arquitetura). Ainda não há versão publicada nem licença definida; veja o
-> [ADR 0013](docs/adr/0013-licenca-e-identidade.md).
+> **Situação:** Fase 0 concluída (prova da arquitetura). Ainda não há versão publicada.
 
 ## O que já funciona
 
@@ -43,4 +42,9 @@ Para rodar todas as verificações, em todos os JDKs disponíveis e no navegador
 - [Compatibilidade](docs/compatibilidade.md)
 - [Relatório da Fase 0](docs/relatorio-fase-0.md): testes, resultados e limitações
 - [Decisões arquiteturais](docs/adr/README.md)
+- [Publicação no Maven Central](docs/publicacao-maven-central.md): preparada, ainda não publicada
 - [Como contribuir](CONTRIBUTING.md)
+
+## Licença
+
+[Apache-2.0](LICENSE). Veja também o [NOTICE](NOTICE).
