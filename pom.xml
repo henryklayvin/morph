@@ -17,6 +17,7 @@
         <module>morph-engine</module>
         <module>providers/morph-provider-image</module>
         <module>providers/morph-provider-pdf</module>
+        <module>morph-application</module>
     </modules>
 
     <properties>
