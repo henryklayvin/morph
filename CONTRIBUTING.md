@@ -32,3 +32,8 @@ Para incluir o JDK 25, extraia um em `.tools/jdk-25` (ignorado pelo Git) ou info
 
 Um teste que não falha quando o código está errado não prova nada. Para proteções, quebre o código de propósito e
 confirme que algum teste reprova.
+
+## Licença das contribuições
+
+O Morph é distribuído sob a [Apache-2.0](LICENSE). Ao enviar uma contribuição, você concorda que ela seja licenciada
+nos mesmos termos, conforme a seção 5 da licença. Não há acordo adicional a assinar.
