@@ -16,6 +16,7 @@
         <module>morph-contracts</module>
         <module>morph-engine</module>
         <module>providers/morph-provider-image</module>
+        <module>providers/morph-provider-pdf</module>
     </modules>
 
     <properties>
