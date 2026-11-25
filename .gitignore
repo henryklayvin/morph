@@ -1,0 +1,27 @@
+# Build
+target/
+*.class
+
+# Local toolchains (JDK 25 for the compatibility matrix); never versioned
+.tools/
+
+# Web
+web/node_modules/
+web/dist-local/
+web/dist-public/
+web/test-results/
+
+# IDE / OS
+.idea/
+*.iml
+.vscode/
+.classpath
+.project
+.settings/
+.DS_Store
+Thumbs.db
+
+# Runtime leftovers
+*.log
+hs_err_pid*.log
+*.jfr
