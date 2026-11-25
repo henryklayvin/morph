@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>dev.morph</groupId>
+        <artifactId>morph-parent</artifactId>
+        <version>0.1.0-SNAPSHOT</version>
+    </parent>
+    <artifactId>morph-local-web</artifactId>
+    <name>Morph :: Local Web</name>
+    <description>Loopback HTTP server that puts the Web UI in front of the engine.</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>dev.morph</groupId>
+            <artifactId>morph-contracts</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>dev.morph</groupId>
+            <artifactId>morph-engine</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>dev.morph</groupId>
+            <artifactId>morph-application</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.javalin</groupId>
+            <artifactId>javalin</artifactId>
+            <exclusions>
+                <!-- Web application scanning, JNDI, CDI and ASM, pulled in by WebSocket support that Morph never
+                     enables. Less code reachable from a socket, and about 1 MB less to ship. -->
+                <exclusion>
+                    <groupId>org.eclipse.jetty.ee10</groupId>
+                    <artifactId>jetty-ee10-annotations</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>tools.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+        <!-- Morph writes no logs: request paths and stack traces may carry personal data. -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-nop</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+            <!-- Built by `npm run build:local` in /web. Optional for Java-only work; see the require-web profile. -->
+            <resource>
+                <directory>${project.basedir}/../web/dist-local</directory>
+                <targetPath>morph-web</targetPath>
+            </resource>
+        </resources>
+    </build>
+
+    <profiles>
+        <!-- Used by CI and releases: a distribution without its interface must not be possible by accident. -->
+        <profile>
+            <id>require-web</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-enforcer-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>require-web</id>
+                                <goals>
+                                    <goal>enforce</goal>
+                                </goals>
+                                <configuration>
+                                    <rules>
+                                        <requireFilesExist>
+                                            <files>
+                                                <file>${project.basedir}/../web/dist-local/index.html</file>
+                                            </files>
+                                            <message>Run `npm ci &amp;&amp; npm run build:local` in /web first.</message>
+                                        </requireFilesExist>
+                                    </rules>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+</project>

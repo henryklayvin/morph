@@ -18,6 +18,7 @@
         <module>providers/morph-provider-image</module>
         <module>providers/morph-provider-pdf</module>
         <module>morph-application</module>
+        <module>morph-local-web</module>
     </modules>
 
     <properties>

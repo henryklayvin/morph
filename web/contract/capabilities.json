@@ -1,0 +1,254 @@
+{
+  "formats" : [ {
+    "id" : "docx",
+    "name" : "DOCX",
+    "category" : "DOCUMENT",
+    "extensions" : [ "docx" ],
+    "mediaType" : "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+  }, {
+    "id" : "jpeg",
+    "name" : "JPEG",
+    "category" : "IMAGE",
+    "extensions" : [ "jpg", "jpeg", "jpe", "jfif" ],
+    "mediaType" : "image/jpeg"
+  }, {
+    "id" : "pdf",
+    "name" : "PDF",
+    "category" : "DOCUMENT",
+    "extensions" : [ "pdf" ],
+    "mediaType" : "application/pdf"
+  }, {
+    "id" : "png",
+    "name" : "PNG",
+    "category" : "IMAGE",
+    "extensions" : [ "png" ],
+    "mediaType" : "image/png"
+  }, {
+    "id" : "webp",
+    "name" : "WebP",
+    "category" : "IMAGE",
+    "extensions" : [ "webp" ],
+    "mediaType" : "image/webp"
+  } ],
+  "operations" : [ {
+    "id" : "png-to-jpeg",
+    "source" : "png",
+    "target" : "jpeg",
+    "provider" : "image",
+    "available" : true,
+    "reason" : "",
+    "cardinality" : "ONE_TO_ONE",
+    "options" : [ {
+      "key" : "quality",
+      "description" : "Qualidade da compressão com perdas",
+      "default" : 85,
+      "type" : "integer",
+      "min" : 1,
+      "max" : 100
+    }, {
+      "key" : "background",
+      "description" : "Cor usada no lugar da transparência",
+      "default" : "#ffffff",
+      "type" : "color"
+    } ],
+    "losses" : [ {
+      "kind" : "QUALITY",
+      "description" : "Compressão com perdas."
+    }, {
+      "kind" : "TRANSPARENCY",
+      "description" : "JPEG não guarda transparência; ela é substituída pela cor de fundo."
+    }, {
+      "kind" : "METADATA",
+      "description" : "EXIF, localização e demais metadados não são copiados (a rotação é aplicada aos pixels)."
+    }, {
+      "kind" : "COLOR_PROFILE",
+      "description" : "Perfis de cor embutidos em PNG são ignorados."
+    }, {
+      "kind" : "BIT_DEPTH",
+      "description" : "16 bits por canal são reduzidos a 8."
+    } ],
+    "limitations" : [ "PNG animado: somente o primeiro quadro é convertido." ]
+  }, {
+    "id" : "jpeg-to-png",
+    "source" : "jpeg",
+    "target" : "png",
+    "provider" : "image",
+    "available" : true,
+    "reason" : "",
+    "cardinality" : "ONE_TO_ONE",
+    "options" : [ ],
+    "losses" : [ {
+      "kind" : "METADATA",
+      "description" : "EXIF, localização e demais metadados não são copiados (a rotação é aplicada aos pixels)."
+    }, {
+      "kind" : "COLOR_PROFILE",
+      "description" : "As cores são convertidas para sRGB."
+    } ],
+    "limitations" : [ ]
+  }, {
+    "id" : "png-to-webp",
+    "source" : "png",
+    "target" : "webp",
+    "provider" : "image",
+    "available" : true,
+    "reason" : "",
+    "cardinality" : "ONE_TO_ONE",
+    "options" : [ {
+      "key" : "quality",
+      "description" : "Qualidade da compressão com perdas",
+      "default" : 85,
+      "type" : "integer",
+      "min" : 1,
+      "max" : 100
+    }, {
+      "key" : "lossless",
+      "description" : "Compressão sem perdas (ignora a qualidade)",
+      "default" : false,
+      "type" : "boolean"
+    } ],
+    "losses" : [ {
+      "kind" : "QUALITY",
+      "description" : "Compressão com perdas."
+    }, {
+      "kind" : "METADATA",
+      "description" : "EXIF, localização e demais metadados não são copiados (a rotação é aplicada aos pixels)."
+    }, {
+      "kind" : "COLOR_PROFILE",
+      "description" : "Perfis de cor embutidos em PNG são ignorados."
+    }, {
+      "kind" : "BIT_DEPTH",
+      "description" : "16 bits por canal são reduzidos a 8."
+    } ],
+    "limitations" : [ "PNG animado: somente o primeiro quadro é convertido.", "No máximo 16383 pixels por lado." ]
+  }, {
+    "id" : "jpeg-to-webp",
+    "source" : "jpeg",
+    "target" : "webp",
+    "provider" : "image",
+    "available" : true,
+    "reason" : "",
+    "cardinality" : "ONE_TO_ONE",
+    "options" : [ {
+      "key" : "quality",
+      "description" : "Qualidade da compressão com perdas",
+      "default" : 85,
+      "type" : "integer",
+      "min" : 1,
+      "max" : 100
+    }, {
+      "key" : "lossless",
+      "description" : "Compressão sem perdas (ignora a qualidade)",
+      "default" : false,
+      "type" : "boolean"
+    } ],
+    "losses" : [ {
+      "kind" : "QUALITY",
+      "description" : "Compressão com perdas."
+    }, {
+      "kind" : "METADATA",
+      "description" : "EXIF, localização e demais metadados não são copiados (a rotação é aplicada aos pixels)."
+    }, {
+      "kind" : "COLOR_PROFILE",
+      "description" : "As cores são convertidas para sRGB."
+    } ],
+    "limitations" : [ "No máximo 16383 pixels por lado." ]
+  }, {
+    "id" : "png-to-pdf",
+    "source" : "png",
+    "target" : "pdf",
+    "provider" : "pdf",
+    "available" : true,
+    "reason" : "",
+    "cardinality" : "MANY_TO_ONE",
+    "options" : [ {
+      "key" : "page",
+      "description" : "Tamanho da página: ajustada à imagem ou A4",
+      "default" : "fit",
+      "type" : "choice",
+      "choices" : [ "fit", "a4" ]
+    } ],
+    "losses" : [ {
+      "kind" : "METADATA",
+      "description" : "EXIF, localização e demais metadados não são copiados (a rotação é aplicada)."
+    }, {
+      "kind" : "BIT_DEPTH",
+      "description" : "16 bits por canal são reduzidos a 8."
+    } ],
+    "limitations" : [ ]
+  }, {
+    "id" : "jpeg-to-pdf",
+    "source" : "jpeg",
+    "target" : "pdf",
+    "provider" : "pdf",
+    "available" : true,
+    "reason" : "",
+    "cardinality" : "MANY_TO_ONE",
+    "options" : [ {
+      "key" : "page",
+      "description" : "Tamanho da página: ajustada à imagem ou A4",
+      "default" : "fit",
+      "type" : "choice",
+      "choices" : [ "fit", "a4" ]
+    } ],
+    "losses" : [ {
+      "kind" : "METADATA",
+      "description" : "EXIF, localização e demais metadados não são copiados (a rotação é aplicada)."
+    }, {
+      "kind" : "COLOR_PROFILE",
+      "description" : "Imagens com perfil de cor, CMYK ou rotação são convertidas para sRGB e recomprimidas em qualidade 95; as demais são incorporadas sem recompressão."
+    } ],
+    "limitations" : [ ]
+  }, {
+    "id" : "pdf-to-png",
+    "source" : "pdf",
+    "target" : "png",
+    "provider" : "pdf",
+    "available" : true,
+    "reason" : "",
+    "cardinality" : "ONE_TO_MANY",
+    "options" : [ {
+      "key" : "dpi",
+      "description" : "Resolução das imagens geradas",
+      "default" : 150,
+      "type" : "integer",
+      "min" : 36,
+      "max" : 600
+    } ],
+    "losses" : [ {
+      "kind" : "VECTOR_AND_TEXT",
+      "description" : "Texto e desenhos viram pixels: não podem mais ser selecionados nem ampliados sem perda."
+    } ],
+    "limitations" : [ "Imagens JPEG 2000 dentro do PDF não são suportadas; fontes não incorporadas são substituídas." ]
+  }, {
+    "id" : "pdf-to-jpeg",
+    "source" : "pdf",
+    "target" : "jpeg",
+    "provider" : "pdf",
+    "available" : true,
+    "reason" : "",
+    "cardinality" : "ONE_TO_MANY",
+    "options" : [ {
+      "key" : "dpi",
+      "description" : "Resolução das imagens geradas",
+      "default" : 150,
+      "type" : "integer",
+      "min" : 36,
+      "max" : 600
+    }, {
+      "key" : "quality",
+      "description" : "Qualidade da compressão com perdas",
+      "default" : 85,
+      "type" : "integer",
+      "min" : 1,
+      "max" : 100
+    } ],
+    "losses" : [ {
+      "kind" : "VECTOR_AND_TEXT",
+      "description" : "Texto e desenhos viram pixels: não podem mais ser selecionados nem ampliados sem perda."
+    }, {
+      "kind" : "QUALITY",
+      "description" : "Compressão com perdas."
+    } ],
+    "limitations" : [ "Imagens JPEG 2000 dentro do PDF não são suportadas; fontes não incorporadas são substituídas." ]
+  } ]
+}
