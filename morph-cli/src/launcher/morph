@@ -24,4 +24,4 @@ case $(uname -s) in
     MINGW* | MSYS* | CYGWIN*) home=$(cygpath -m "$home") ;; # a Windows java needs a Windows class path
 esac
 
-exec "$java" --enable-native-access=ALL-UNNAMED -cp "$home/lib/*" dev.morph.cli.Main "$@"
+exec "$java" --enable-native-access=ALL-UNNAMED -cp "$home/lib/*" io.github.henryklayvin.morph.cli.Main "$@"

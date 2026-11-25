@@ -1,7 +1,8 @@
 /**
- * Contract between the interface and whoever performs the conversions. Mirrors dev.morph.local.ApiViews; the file
- * contract/capabilities.json is produced by the Java tests and read by the TypeScript ones, so that neither side can
- * drift unnoticed. Operation ids and format ids are the same in the CLI, Morph Local and the public Web build.
+ * Contract between the interface and whoever performs the conversions. Mirrors
+ * io.github.henryklayvin.morph.local.ApiViews; the file contract/capabilities.json is produced by the Java tests and
+ * read by the TypeScript ones, so that neither side can drift unnoticed. Operation ids and format ids are the same in
+ * the CLI, Morph Local and the public Web build.
  */
 
 export type Cardinality = 'ONE_TO_ONE' | 'ONE_TO_MANY' | 'MANY_TO_ONE';

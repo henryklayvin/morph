@@ -29,7 +29,7 @@ if (shots) mkdirSync(shots, { recursive: true });
 
 const morphArgs = (...args) => [
   '--enable-native-access=ALL-UNNAMED', `-Djava.io.tmpdir=${javaTemp}`,
-  '-cp', path.join(target, distribution, 'morph', 'lib', '*'), 'dev.morph.cli.Main', ...args,
+  '-cp', path.join(target, distribution, 'morph', 'lib', '*'), 'io.github.henryklayvin.morph.cli.Main', ...args,
 ];
 
 let failures = 0;
