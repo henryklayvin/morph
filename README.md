@@ -42,6 +42,7 @@ Para rodar todas as verificações, em todos os JDKs disponíveis e no navegador
 - [Compatibilidade](docs/compatibilidade.md)
 - [Relatório da Fase 0](docs/relatorio-fase-0.md): testes, resultados e limitações
 - [Decisões arquiteturais](docs/adr/README.md)
+- [Publicação no Maven Central](docs/publicacao-maven-central.md): preparada, ainda não publicada
 - [Como contribuir](CONTRIBUTING.md)
 
 ## Licença
