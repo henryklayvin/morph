@@ -14,6 +14,7 @@
 
     <modules>
         <module>morph-contracts</module>
+        <module>morph-engine</module>
     </modules>
 
     <properties>
